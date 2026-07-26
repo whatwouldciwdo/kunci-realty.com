@@ -214,7 +214,7 @@ export default function LatestPropertySection() {
           </div>
 
           <p className="description-text">
-            Kunci Realty bermitra dengan arsitek dan desainer terkemuka untuk mewujudkan ide dengan integritas dan presisi. Hubungan kami dibangun di atas kepercayaan, perhatian pada detail, dan rasa hormat bersama terhadap desain.
+            Kunci Realty hadir sebagai agen properti terpercaya yang membantu Anda menemukan hunian impian dengan pendekatan personal dan profesional. Setiap properti kami pilih dengan teliti untuk memastikan nilai terbaik di lokasi paling strategis Indonesia.
           </p>
 
           <div className="collaborators-table" style={{ width: "100%", borderTop: "1px solid #b5b5b5" }}>
