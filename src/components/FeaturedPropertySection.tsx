@@ -385,7 +385,7 @@ export default function FeaturedPropertySection() {
           width: "100%",
           maxWidth: "100%",
           margin: isMobile ? "2rem 0 0" : "8.5rem 0 0",
-          gap: isMobile ? "1.5rem" : undefined,
+          gap: isMobile ? "1.5rem" : "4.5rem",
         }}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -396,8 +396,8 @@ export default function FeaturedPropertySection() {
         <div
           className="left-media-col"
           style={{
-            width: isMobile ? "100%" : "52%",
-            maxWidth: isMobile ? "100%" : "750px",
+            width: isMobile ? "100%" : "48%",
+            maxWidth: isMobile ? "100%" : "720px",
             display: "flex",
             flexDirection: "column",
             gap: isMobile ? "1.5rem" : "6.5rem",
