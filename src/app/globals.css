@@ -77,3 +77,122 @@ body {
 .animate-hero-reveal {
   animation: heroReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Property Detail Page Mobile Responsiveness */
+.detail-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 440px;
+}
+
+.detail-bento-main {
+  grid-column: span 7;
+  position: relative;
+  min-height: 440px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.detail-bento-thumbs {
+  grid-column: span 5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.detail-bento-thumb-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 212px;
+  cursor: pointer;
+}
+
+.detail-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2rem;
+}
+
+.detail-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.detail-facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem 2.5rem;
+}
+
+.detail-recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Mobile & Tablet Responsive Media Queries */
+@media (max-width: 1023px) {
+  .detail-bento-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .detail-bento-main {
+    grid-column: span 12;
+    min-height: 320px;
+    height: 320px;
+  }
+
+  .detail-bento-thumbs {
+    grid-column: span 12;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+
+  .detail-bento-thumb-item {
+    height: 100px !important;
+  }
+
+  .detail-main-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .detail-bento-main {
+    min-height: 250px;
+    height: 250px;
+  }
+
+  .detail-bento-thumbs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-bento-thumb-item {
+    height: 120px !important;
+  }
+
+  .detail-specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 0.75rem;
+  }
+
+  .detail-facilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 1rem;
+  }
+
+  .detail-recommendations-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -18,11 +19,12 @@ export default function NavigationModal({ isOpen, onClose, onTalkClick, isScroll
   const [isContactHovered, setIsContactHovered] = useState(false);
 
   const menuLinks = [
-    { title: "Beranda", href: "#" },
-    { title: "Apartemen", href: "#residences" },
-    { title: "Ruang Kantor", href: "#residences" },
-    { title: "Rumah", href: "#residences" },
-    { title: "Resort", href: "#residences" },
+    { title: "Home", href: "/" },
+    { title: "Pencarian Lanjutan", href: "/search" },
+    { title: "Apartments", href: "/search" },
+    { title: "Office Space", href: "/search" },
+    { title: "Houses", href: "/search" },
+    { title: "Resorts", href: "/search" },
   ];
 
   return (
@@ -144,7 +146,7 @@ export default function NavigationModal({ isOpen, onClose, onTalkClick, isScroll
                     alignItems: "center",
                   }}
                 >
-                  <a
+                  <Link
                     href={link.href}
                     onClick={() => onClose()}
                     onMouseEnter={() => setHoveredIndex(index)}
@@ -189,7 +191,7 @@ export default function NavigationModal({ isOpen, onClose, onTalkClick, isScroll
                     >
                       {link.title}
                     </span>
-                  </a>
+                  </Link>
                 </motion.div>
               ))}
 
@@ -212,8 +214,8 @@ export default function NavigationModal({ isOpen, onClose, onTalkClick, isScroll
                 }}
               >
                 {/* About Us Link */}
-                <a
-                  href="#philosophy"
+                <Link
+                  href="/about"
                   onClick={onClose}
                   onMouseEnter={() => setIsAboutHovered(true)}
                   onMouseLeave={() => setIsAboutHovered(false)}
@@ -246,9 +248,9 @@ export default function NavigationModal({ isOpen, onClose, onTalkClick, isScroll
                       transition: "transform 1.4s cubic-bezier(0.16, 1, 0.3, 1)",
                     }}
                   >
-                    Tentang Kami
+                    About Us
                   </span>
-                </a>
+                </Link>
 
                 <span style={{ opacity: 0.4, fontWeight: 300 }}>|</span>
 
@@ -278,7 +280,7 @@ export default function NavigationModal({ isOpen, onClose, onTalkClick, isScroll
                       transition: "transform 1.4s cubic-bezier(0.16, 1, 0.3, 1)",
                     }}
                   >
-                    Kontak
+                    Contact
                   </span>
                   {/* Square bullet indicator sliding in from the RIGHT */}
                   <span

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import NavigationModal from "./NavigationModal";
 
@@ -13,6 +14,7 @@ export default function Header({ onTalkClick }: HeaderProps) {
   const [isMenuHovered, setIsMenuHovered] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFooterInView, setIsFooterInView] = useState(false);
+  const [isHeaderReady, setIsHeaderReady] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,9 @@ export default function Header({ onTalkClick }: HeaderProps) {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
+    // The first sync should reflect the browser's restored scroll position
+    // without animating the navbar from its SSR position.
+    setIsHeaderReady(true);
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -91,8 +96,8 @@ export default function Header({ onTalkClick }: HeaderProps) {
         }}
       >
         {/* Brand Logo - Single Official Logo */}
-        <a
-          href="#"
+        <Link
+          href="/"
           style={{
             display: "flex",
             alignItems: "center",
@@ -114,7 +119,7 @@ export default function Header({ onTalkClick }: HeaderProps) {
             }}
             priority
           />
-        </a>
+        </Link>
 
         {/* Center Menu Pill with Fixed Top Center Positioning Floating over Content */}
         <button
@@ -145,7 +150,7 @@ export default function Header({ onTalkClick }: HeaderProps) {
             justifyContent: "space-between",
             cursor: "pointer",
             willChange: "transform, min-width, padding",
-            transition: "all 1.1s cubic-bezier(0.16, 1, 0.3, 1)",
+            transition: isHeaderReady ? "all 1.1s cubic-bezier(0.16, 1, 0.3, 1)" : "none",
             boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
           }}
         >

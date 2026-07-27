@@ -5,6 +5,7 @@ import { X, Bed, Bath, Maximize2, MapPin, Calendar, ArrowRight, ShieldCheck, Che
 
 export interface Residence {
   id: string;
+  slug?: string;
   title: string;
   category: string;
   location: string;
@@ -12,6 +13,7 @@ export interface Residence {
   beds: number;
   baths: number;
   sqft: string;
+  landSqft?: string;
   yearBuilt: string;
   image: string;
   description: string;

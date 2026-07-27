@@ -344,7 +344,7 @@ export default function FeaturedPropertySection() {
           <p>
             Sebagai agen properti terpercaya dengan pengalaman lebih dari 35 tahun di Indonesia, kami menghadirkan kontinuitas, akuntabilitas, dan kemampuan terbukti untuk setiap proyek. Hasilnya adalah portofolio hunian yang dirancang dengan cermat — proyek-proyek yang didefinisikan oleh presisi, kepedulian, dan keunggulan yang tenang.
           </p>
-          <a className="property-link" href="#residences">
+          <a className="property-link" href="/search">
             Lihat semua properti
           </a>
         </motion.div>

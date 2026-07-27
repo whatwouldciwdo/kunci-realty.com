@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -158,34 +159,34 @@ export default function FooterSection({ onTalkClick }: FooterSectionProps) {
               }}
             >
               <li>
-                <a href="#" className="footer-nav-link">
-                  Beranda
-                </a>
+                <Link href="/" className="footer-nav-link">
+                  Home
+                </Link>
               </li>
               <li>
-                <a href="#residences" className="footer-nav-link">
-                  Apartemen
-                </a>
+                <Link href="/search" className="footer-nav-link">
+                  Apartments
+                </Link>
               </li>
               <li>
-                <a href="#residences" className="footer-nav-link">
-                  Ruang Kantor
-                </a>
+                <Link href="/search" className="footer-nav-link">
+                  Office Space
+                </Link>
               </li>
               <li>
-                <a href="#residences" className="footer-nav-link">
-                  Rumah
-                </a>
+                <Link href="/search" className="footer-nav-link">
+                  Houses
+                </Link>
               </li>
               <li>
-                <a href="#residences" className="footer-nav-link">
-                  Resort
-                </a>
+                <Link href="/search" className="footer-nav-link">
+                  Resorts
+                </Link>
               </li>
               <li>
-                <a href="#philosophy" className="footer-nav-link">
-                  Tentang Kami
-                </a>
+                <Link href="/about" className="footer-nav-link">
+                  About Us
+                </Link>
               </li>
               <li>
                 <a
@@ -198,7 +199,7 @@ export default function FooterSection({ onTalkClick }: FooterSectionProps) {
                     }
                   }}
                 >
-                  Kontak
+                  Contact
                 </a>
               </li>
             </ul>
@@ -415,34 +416,22 @@ export default function FooterSection({ onTalkClick }: FooterSectionProps) {
         {/* Vertical Links List with Thin Lines */}
         <div style={{ display: "flex", flexDirection: "column", marginTop: "1rem" }}>
           <div className="footer-mobile-nav-item">
-            <a href="#" className="footer-nav-link">
-              Beranda
-            </a>
+            <Link href="/" className="footer-nav-link">Home</Link>
           </div>
           <div className="footer-mobile-nav-item">
-            <a href="#residences" className="footer-nav-link">
-              Apartemen
-            </a>
+            <Link href="/search" className="footer-nav-link">Apartments</Link>
           </div>
           <div className="footer-mobile-nav-item">
-            <a href="#residences" className="footer-nav-link">
-              Ruang Kantor
-            </a>
+            <Link href="/search" className="footer-nav-link">Office Space</Link>
           </div>
           <div className="footer-mobile-nav-item">
-            <a href="#residences" className="footer-nav-link">
-              Rumah
-            </a>
+            <Link href="/search" className="footer-nav-link">Houses</Link>
           </div>
           <div className="footer-mobile-nav-item">
-            <a href="#residences" className="footer-nav-link">
-              Resort
-            </a>
+            <Link href="/search" className="footer-nav-link">Resorts</Link>
           </div>
           <div className="footer-mobile-nav-item">
-            <a href="#philosophy" className="footer-nav-link">
-              Tentang Kami
-            </a>
+            <Link href="/about" className="footer-nav-link">About Us</Link>
           </div>
           <div className="footer-mobile-nav-item">
             <a

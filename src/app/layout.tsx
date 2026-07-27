@@ -30,10 +30,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${plusJakarta.variable} ${inter.variable}`}>
-      <head>
-        <link rel="icon" href="/logo/KUNCI REALTY LOGO ONLY.png" type="image/png" sizes="any" />
-        <link rel="apple-touch-icon" href="/logo/KUNCI REALTY LOGO ONLY.png" />
-      </head>
       <body>{children}</body>
     </html>
   );

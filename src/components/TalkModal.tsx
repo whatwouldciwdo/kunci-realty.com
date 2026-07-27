@@ -4,12 +4,15 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle, Send, Sparkles } from "lucide-react";
 
+import SearchableSelect from "./SearchableSelect";
+
 interface TalkModalProps {
   isOpen: boolean;
   onClose: () => void;
+  prefilledProperty?: string;
 }
 
-export default function TalkModal({ isOpen, onClose }: TalkModalProps) {
+export default function TalkModal({ isOpen, onClose, prefilledProperty }: TalkModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -114,7 +117,7 @@ export default function TalkModal({ isOpen, onClose }: TalkModalProps) {
                       marginBottom: "0.75rem",
                     }}
                   >
-                    <Sparkles size={14} /> Konsultasi Privat
+                    <Sparkles size={14} /> Private Consultation
                   </div>
                   <h2
                     style={{
@@ -126,10 +129,13 @@ export default function TalkModal({ isOpen, onClose }: TalkModalProps) {
                       margin: 0,
                     }}
                   >
-                    Wujudkan Hunian Impian Anda
+                    {prefilledProperty ? `Property Consultation: ${prefilledProperty}` : "Realize Your Vision"}
                   </h2>
                   <p style={{ color: "#6b7280", marginTop: "0.5rem", fontSize: "0.95rem" }}>
-                    Ceritakan kebutuhan properti Anda. Tim kami akan menghubungi Anda dalam 24 jam.
+                    {prefilledProperty
+                      ? `You are inquiring about the deal ${prefilledProperty}. Our team will get back to you shortly.`
+                      : "Share your property requirements with us. Our advisory team will reach out within 24 hours."
+                    }
                   </p>
                 </div>
 
@@ -137,12 +143,12 @@ export default function TalkModal({ isOpen, onClose }: TalkModalProps) {
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                     <div>
                       <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#374151" }}>
-                        Nama Lengkap *
+                        Full Name *
                       </label>
                       <input
                         type="text"
                         required
-                        placeholder="Budi Santoso"
+                        placeholder="John Smith"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         style={{
@@ -159,12 +165,12 @@ export default function TalkModal({ isOpen, onClose }: TalkModalProps) {
 
                     <div>
                       <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#374151" }}>
-                        Alamat Email *
+                        Email Address *
                       </label>
                       <input
                         type="email"
                         required
-                        placeholder="budi@contoh.com"
+                        placeholder="john@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         style={{
@@ -183,60 +189,48 @@ export default function TalkModal({ isOpen, onClose }: TalkModalProps) {
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                     <div>
                       <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#374151" }}>
-                        Minat Utama
+                        Primary Interest
                       </label>
-                      <select
+                      <SearchableSelect
+                        options={["Custom Architecture", "Luxury Residential", "Interior Architecture", "Land & Asset Development"]}
                         value={formData.interest}
-                        onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                        style={{
-                          width: "100%",
+                        onChange={(val) => setFormData({ ...formData, interest: val })}
+                        buttonStyle={{
                           padding: "0.75rem 1rem",
                           borderRadius: "12px",
                           border: "1px solid #e5e7eb",
                           backgroundColor: "#f9fafb",
                           fontSize: "0.95rem",
-                          outline: "none",
                         }}
-                      >
-                        <option>Arsitektur Custom</option>
-                        <option>Pembelian Hunian Mewah</option>
-                        <option>Desain Interior</option>
-                        <option>Pengembangan Lahan & Properti</option>
-                      </select>
+                      />
                     </div>
 
                     <div>
                       <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#374151" }}>
-                        Kisaran Anggaran
+                        Budget Range
                       </label>
-                      <select
+                      <SearchableSelect
+                        options={["$500k - $2M", "$2M - $10M", "$10M - $50M", "$50M+"]}
                         value={formData.budget}
-                        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        style={{
-                          width: "100%",
+                        onChange={(val) => setFormData({ ...formData, budget: val })}
+                        buttonStyle={{
                           padding: "0.75rem 1rem",
                           borderRadius: "12px",
                           border: "1px solid #e5e7eb",
                           backgroundColor: "#f9fafb",
                           fontSize: "0.95rem",
-                          outline: "none",
                         }}
-                      >
-                        <option>Rp 1M - Rp 5M</option>
-                        <option>Rp 5M - Rp 15M</option>
-                        <option>Rp 15M - Rp 50M</option>
-                        <option>Rp 50M+</option>
-                      </select>
+                      />
                     </div>
                   </div>
 
                   <div>
                     <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#374151" }}>
-                      Visi Proyek / Catatan
+                      Project Vision / Notes
                     </label>
                     <textarea
                       rows={3}
-                      placeholder="Bagikan lokasi yang diinginkan, preferensi estetika, atau timeline Anda..."
+                      placeholder="Share target location, design preferences, or investment timeline..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       style={{
@@ -273,7 +267,7 @@ export default function TalkModal({ isOpen, onClose }: TalkModalProps) {
                       marginTop: "0.5rem",
                     }}
                   >
-                    Kirim Pertanyaan <Send size={18} />
+                    Send Inquiry <Send size={18} />
                   </button>
                 </form>
               </>
@@ -298,10 +292,10 @@ export default function TalkModal({ isOpen, onClose }: TalkModalProps) {
                   <CheckCircle size={40} />
                 </motion.div>
                 <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.75rem", fontWeight: 700, color: "#111827" }}>
-                  Pertanyaan Diterima
+                  Inquiry Received
                 </h3>
                 <p style={{ color: "#6b7280", marginTop: "0.5rem", fontSize: "0.95rem", lineHeight: 1.6 }}>
-                  Terima kasih, <strong>{formData.name}</strong>. Tim senior kami akan meninjau preferensi Anda dan menghubungi Anda melalui email di <strong>{formData.email}</strong> segera.
+                  Thank you, <strong>{formData.name}</strong>. Our senior advisors will review your submission and contact you at <strong>{formData.email}</strong> shortly.
                 </p>
                 <button
                   onClick={handleReset}
@@ -316,7 +310,7 @@ export default function TalkModal({ isOpen, onClose }: TalkModalProps) {
                     cursor: "pointer",
                   }}
                 >
-                  Tutup
+                  Close
                 </button>
               </div>
             )}
